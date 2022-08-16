@@ -27,4 +27,9 @@ public class ProductController {
         return productService.createNewProduct(product);
     }
 
+    @DeleteMapping("/del/{id}")
+    public String createNewGateway(@PathVariable Long id) {
+        return productService.deleteById(id);
+    }
+
 }

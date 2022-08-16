@@ -2,6 +2,7 @@ package com.backend.Coffee.config;
 
 import com.backend.Coffee.jwt.AuthEntryPointJwt;
 import com.backend.Coffee.jwt.AuthTokenFilter;
+import com.backend.Coffee.jwt.JwtUtils;
 import com.backend.Coffee.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -14,6 +15,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
@@ -36,7 +38,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
     private static final String[] AUTH_WHITELIST = {
             // -- Swagger UI v3 (OpenAPI)
-            "/v3/api-docs/**", "/swagger-ui/**", "/api/auth/signin", "/api/auth/signup"
+            "/v3/api-docs/**", "/swagger-ui/**", "/api/auth/signin/**", "/api/auth/signup/**"
             // other public endpoints of your API may be appended to this array
     };
 
@@ -59,7 +61,8 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable().exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
-                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().authorizeRequests()
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).
+                and().authorizeRequests()
                 .antMatchers(AUTH_WHITELIST).permitAll().anyRequest()
                 .authenticated();
         http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
