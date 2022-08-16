@@ -1,10 +1,12 @@
 package com.backend.Coffee.repository;
-
-import com.backend.Coffee.model.Product;
+import com.backend.Coffee.model.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-@Repository
-public interface ProductRepository extends JpaRepository<Product, Long> {
 
+
+@Repository
+public interface RoleRepository extends JpaRepository<Role, Long> {
+    public Role findByName(String name);
 }
+
