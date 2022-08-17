@@ -19,8 +19,6 @@ public class Product {
     @NotEmpty(message = "Product Should have a name!!!")
     private String productName;
 
-
-    // @Min(value = 15, message = "Product Should have a price greater than or equal to 15")
     private Double price;
 
     private String description;

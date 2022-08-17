@@ -7,14 +7,13 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("product")
 public class ProductController {
 
     @Autowired
     ProductService productService;
-    //@PreAuthorize("hasAnyRole('ROLE_USER','ROLE_ADMIN')")
     @GetMapping("/all")
     public List<Product> getAllProduct() {
         return productService.getAllProduct();
@@ -22,7 +21,6 @@ public class ProductController {
 
 
     @PostMapping("/add")
-    //@PreAuthorize("hasAnyRole('ROLE_USER','ROLE_ADMIN')")
     public Product createNewGateway(@RequestBody Product product) {
         return productService.createNewProduct(product);
     }
