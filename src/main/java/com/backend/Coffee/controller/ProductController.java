@@ -3,7 +3,6 @@ package com.backend.Coffee.controller;
 import com.backend.Coffee.model.Product;
 import com.backend.Coffee.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -26,7 +25,8 @@ public class ProductController {
     }
 
     @DeleteMapping("/del/{id}")
-    public String createNewGateway(@PathVariable Long id) {
+    public String createNewGateway(@PathVariable Long id)
+    {
         return productService.deleteById(id);
     }
 

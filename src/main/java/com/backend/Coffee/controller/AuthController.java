@@ -42,14 +42,15 @@ public class AuthController {
     public ResponseEntity<?> registerUser(@RequestBody SignupRequest signUpRequest) {
 
         if (userRepository.existsByEmail(signUpRequest.getEmail())) {
-            return ResponseEntity.badRequest().body(new MessageResponse("Error: Email is already in use!"));
+            return ResponseEntity.badRequest().body(new MessageResponse("Error: A Duplicate E-Mail."));
         }
 
-        // Create new user's account
         User user = new User(null, signUpRequest.getEmail(),
                 encoder.encode(signUpRequest.getPassword()), signUpRequest.getUserName());
         userRepository.save(user);
         return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
+        // Create new user's account
+
     }
 
 }
