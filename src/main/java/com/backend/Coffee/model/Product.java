@@ -16,7 +16,7 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotEmpty(message = "Product Should have a name!!!")
+    @NotEmpty(message = "Kindly enter product's name")
     private String productName;
 
     private Double price;

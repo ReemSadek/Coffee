@@ -24,6 +24,6 @@ public class ProductService {
 
     public String deleteById(Long id) {
         productRepository.deleteById(id);
-        return "Deleted successfully";
+        return "Product deleted successfully";
     }
 }
