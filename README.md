@@ -7,8 +7,7 @@
 Angular Framework
  ### Android App:
 
-![](../Static/PhotoRoom_20220818_094442.png)
-
+![](Pictures/PhotoRoom_20220818_094442.png)
 ### **Android Github**
 
  ![](../Static/androidgithub.png)
