@@ -16,7 +16,8 @@ Angular Framework
 ## UI & Features:
 
 ###  SIGNUP
-![](../Static/signup.png)
+
+![Uploading signup.png…]()
 
 ### LOGIN
 ![](../Static/login.png)
